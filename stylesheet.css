@@ -1,0 +1,13 @@
+th {
+	font-size: 30px;
+	color: black;
+	font-family: Arial, serif;
+}
+
+table {
+	border: 2px solid;
+}
+
+th {
+	border: 1px solid blue;
+}
