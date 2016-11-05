@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDOjV_XJ8DYz1q8lV-JplqxGy7o0Xcckp0",
+    authDomain: "sleepmodel-4e2aa.firebaseapp.com",
+    databaseURL: "https://sleepmodel-4e2aa.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "844919286629"
+  };
+  firebase.initializeApp(config);
+</script>
 	<title>Who Sleep the Most?</title>
 	<script type="text/javascript" src="app.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -10,7 +22,7 @@
 </head>
 
 <body>
-	<table>
+	<table id="table">
 		<tr>
 			<th>Rank</th>
 			<th>Username</th>
@@ -21,6 +33,10 @@
 
 </body>
 
+<script>
+	var data = new Firebase('https://sleepmodel-4e2aa.firebaseio.com/');
+	//For database
+</script>
 
 
 </html>

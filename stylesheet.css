@@ -6,10 +6,14 @@ th {
 
 table {
 	border: 2px solid;
-	margin-top: 3%;
-	margin-left: 3%;
+	margin-top: 2%;
+	margin-left: 2%;
 }
 
 th {
 	border: 1px solid blue;
+}
+
+body {
+	background-image: url("img\\background.jpg");
 }
