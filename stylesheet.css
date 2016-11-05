@@ -16,4 +16,8 @@ th {
 
 body {
 	background-image: url("img\\background.jpg");
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
