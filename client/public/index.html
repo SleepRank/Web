@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="icon" href="./img/favicon.png" type="image/gif">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 	</table>
 	<!--button class="bg-success" id="friends">Friends</button>
 	<button id="me">Me</button-->
-	<button onclick="showList()" id="show">Show Rank</button>
+	<button onclick="showList()" autocomplete="off" id="show">Show Rank</button>
 </div>
 </body>
 
@@ -43,7 +44,7 @@ function showList(){
 		//url: "http://sleeprank.herokuapp.com/api/users",
 		success: function (data) {
 			for (i = 0; i < data.value.length; i++) {
-	 			$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
+	 			$("#list").append("<tr><td>"+i+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
 			}
 		}
 	});
