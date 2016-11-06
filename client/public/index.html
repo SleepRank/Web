@@ -4,24 +4,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">   
-<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDOjV_XJ8DYz1q8lV-JplqxGy7o0Xcckp0",
-    authDomain: "sleepmodel-4e2aa.firebaseapp.com",
-    databaseURL: "https://sleepmodel-4e2aa.firebaseio.com",
-    storageBucket: "",
-    messagingSenderId: "844919286629"
-  };
-  firebase.initializeApp(config);
-</script>
+
 <title>Who Sleep the Most?</title>
 <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"-->
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -31,33 +19,35 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script-->
 
 <div>
-	<table id="table" class="table-striped">
-		<tr class="bg-success">
+	<table id="list">
+		<tr>
 			<th>Rank</th>
 			<th>Username</th>
-			<th>Quailty Sleeping time</th>
-		</tr>
-		<!--Add from database-->
-		<tr class="bg-success">
-			<td>1</td>
-			<td>Tom</td>
-			<td>10</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Mary</td>
-			<td>9</td>
+			<th>Sleeping time(hours)</th>
+			<th>Likes</th>
 		</tr>
 	</table>
-	<button class="bg-success" id="friends">Friends</button>
-	<button id="me">Me</button>
+	<!--button class="bg-success" id="friends">Friends</button>
+	<button id="me">Me</button-->
+	<button onclick="showList()" id="show">Show Rank</button>
 </div>
 </body>
 
 <script>
-	var data = new Firebase('https://sleepmodel-4e2aa.firebaseio.com/');
-	//For database
+function showList(){
+	$("#show").prop("disabled", true);
+	$.ajax({
+		dataType: "json",
+		contentType: "application/json",
+		url: "sleeprank.json",
+		//url: "http://sleeprank.herokuapp.com/api/users",
+		success: function (data) {
+			for (i = 0; i < data.value.length; i++) {
+	 			$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
+			}
+		}
+	});
+}
 </script>
-
 
 </html>
