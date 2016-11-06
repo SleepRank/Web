@@ -1,0 +1,42 @@
+th {
+	border: 0px solid;
+	font-size: 30px;
+	color: white;
+	font-family: Arial, serif;
+	padding: 10px;
+	vertical-align: middle;
+	background-color: #FFA833;
+}
+
+td {
+	font-size: 30px;
+	font-family: Arial, serif;
+	padding: 10px;
+	text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: white}
+
+table {
+	border: 0px solid;
+	margin-top: 2%;
+	margin-left: 2%;
+	border-collapse: collapse;
+	vertical-align: center;
+}
+
+
+body {
+	background-image: url("img\\background.jpg");
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#friends {
+	font-size: 10px;
+	background-color: #FFA833;
+	text-align: center;
+}
