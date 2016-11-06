@@ -8,6 +8,15 @@ var app = express();
 app.use(express.static(__dirname + ".."));
 app.use(bodyParser.json());
 
+// html
+app.set('views', path.join(__dirname, '../client/public'));
+app.engine("html", require("ejs").__express);
+app.set('view engine', 'html');
+app.use(express.static(path.join(__dirname, '../client/public')))
+
+var routes = require('./routes/index')
+app.use('/',routes);
+
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
