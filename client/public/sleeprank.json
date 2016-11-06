@@ -1,0 +1,34 @@
+{
+  	"auth" : "whatever",
+  	"value" : [
+
+  			{"userId" : "1",
+  			"name" : "Bobby",
+  			"rank" : "5",
+  			"sleepTime" : "6.7",
+  			"friendArray" : [],
+  			"favArray" : [],
+  			"numOfLike" : "10",
+  			"hasUpdated" : "false"},
+ 
+  
+  			{"userId" : "2",
+  			"name" : "Rainy",
+  			"rank" : "3",
+  			"sleepTime" : "6.9",
+  			"friendArray" : [],
+  			"favArray" : [],
+  			"numOfLike" : "10",
+  			"hasUpdated" : "false"},
+ 
+  			{"userId" : "2",
+  			"name" : "Rain",
+  			"rank" : "3",
+  			"sleepTime" : "6.9",
+  			"friendArray" : [],
+  			"favArray" : [],
+  			"numOfLike" : "10",
+  			"hasUpdated" : "false"}
+
+  	]
+}
