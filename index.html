@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"-->
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -21,33 +20,60 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script-->
 
 <div>
-	<table id="table" class="table-striped">
-		<tr class="bg-success">
+	<table id="list">
+		<tr>
 			<th>Rank</th>
 			<th>Username</th>
-			<th>Quailty Sleeping time</th>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Bobby</td>
-			<td>10 hours</td>
-		</tr>
-
-		<!--Add from database-->
-		<tr class="bg-success">
-			<td>1</td>
-			<td>Tom</td>
-			<td>10</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Mary</td>
-			<td>9</td>
+			<th>Sleeping time(hours)</th>
+			<th>Likes</th>
 		</tr>
 	</table>
-	<button class="bg-success" id="friends">Friends</button>
-	<button id="me">Me</button>
+	<!--button class="bg-success" id="friends">Friends</button>
+	<button id="me">Me</button-->
+	<button onclick="showList()">Show Rank</button>
 </div>
 </body>
+
+<script>
+function showList(){
+	$.ajax({
+		dataType: "json",
+		contentType: "application/json",
+		url: "sleeprank.json",
+		//url: "http://sleeprank.herokuapp.com/api/users",
+		success: function (data) {
+			for (i = 0; i < data.value.length; i++) {
+	 			$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
+			}
+		}
+	});
+
+
+
+	// $.getJSON("sleeprank.json", {
+	// 	tagmode: "any",
+	// 	format: "json"
+	// })
+	// .done(function(data){
+	// 	//data = JSON.parse(data);
+	// 	console.log(data.value[0][4]);
+	// 	console.log(data.value[0]['name']);
+	// 	console.log(data.value[0]["name"]);
+	// 	console.log(data.value[0].name);
+	// 	for (i = 0; i < data.value.length; i++) {
+	// 		$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
+	// 	}
+	// });
+
+	// $.getJSON("", function(data) {
+	// $.getJSON("sleeprank.json", function(data) {
+	// // 	console.log(data);
+	// 	for (i = 0; i < data.value.length; i++) {
+	// 		alert(i);
+	// 		$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
+	// 	}
+	// })	
+}
+</script>
 
 </html>

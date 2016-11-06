@@ -3,7 +3,7 @@ th {
 	font-size: 30px;
 	color: white;
 	font-family: Arial, serif;
-	border: 1px solid blue;
+	border: 1px solid black;
 	padding: 10px;
 	vertical-align: middle;
 	background-color: #FFA833;
@@ -28,7 +28,7 @@ table {
 }
 
 td {
-	border: 1px solid blue;
+	border: 1px solid black;
 	font-size: 20px;
 }
 
