@@ -20,7 +20,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 tr:nth-child(odd){background-color: white}
 
 table {
-	border: 0px solid;
+	border: none;
 	margin-top: 2%;
 	margin-left: 2%;
 	border-collapse: collapse;
@@ -40,8 +40,29 @@ body {
     background-size: cover;
 }
 
-#friends {
-	font-size: 10px;
-	background-color: #FFA833;
-	text-align: center;
+button {
+	display: inline-block;
+  	border-radius: 8px;
+  	margin-left: 10%;
+  background-color: #FFA833;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  padding: 3px;
+  width: 100px;
+  margin: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+h1 {
+	vertical-align: middle;
 }
