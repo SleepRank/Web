@@ -1,0 +1,39 @@
+{
+  "name": "sleeprank",
+  "version": "1.0.0",
+  "description": "Socialize your sleep time",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/bin/www",
+    "test": "\"ls\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SleepRank/Web.git"
+  },
+  "keywords": [
+    "sleeping"
+  ],
+  "author": "Guocheng Wei <wei170@purdue.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SleepRank/Web/issues"
+  },
+  "homepage": "https://github.com/SleepRank/Web#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "cool-ascii-faces": "^1.3.4",
+    "debug": "^2.2.0",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11",
+    "morgan": "^1.7.0",
+    "node": "0.0.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {}
+}
