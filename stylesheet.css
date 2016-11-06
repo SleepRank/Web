@@ -2,6 +2,7 @@ th {
 	font-size: 30px;
 	color: black;
 	font-family: Arial, serif;
+	border: 1px solid blue;
 }
 
 table {
@@ -10,8 +11,10 @@ table {
 	margin-left: 2%;
 }
 
-th {
+
+td {
 	border: 1px solid blue;
+	font-size: 20px;
 }
 
 body {
