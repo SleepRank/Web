@@ -42,11 +42,11 @@ function showList(){
 	$.ajax({
 		dataType: "json",
 		contentType: "application/json",
-		url: "sleeprank.json",
-		//url: "http://sleeprank.herokuapp.com/api/users",
+		//url: "sleeprank.json",		//Local Test
+		url: "https://api.mlab.com/api/1/databases/heroku_mz1ngxb6/collections/users?apiKey=cQaEhrsheMTqeVChoPKrjj81iwQpuv2i",
 		success: function (data) {
-			for (i = 0; i < data.value.length; i++) {
-	 			$("#list").append("<tr><td>"+i+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
+			for (i = 0; i < data.length; i++) {
+	 			$("#list").append("<tr><td>"+(i+1)+"</td><td>"+data[i].name+"</td><td>"+data[i].sleepTime+"</td><td>"+data[i].numOfLikes+"</td></tr>");
 			}
 		}
 	});

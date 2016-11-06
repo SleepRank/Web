@@ -4,8 +4,8 @@
   		{
             "userId" : "1",
   		    "name" : "Bobby",
-  		    "rank" : "5",
-  		    "sleepTime" : "6.7",
+  		    "rank" : "1",
+  		    "sleepTime" : "7.4",
   		    "friendArray" : ["Rainy"],
   		    "favArray" : ["Rainy"],
   		    "numOfLike" : "10",
@@ -14,7 +14,7 @@
   		{
             "userId" : "2",
   			"name" : "Rainy",
-  			"rank" : "3",
+  			"rank" : "2",
   			"sleepTime" : "6.9",
   			"friendArray" : ["Bobby"],
   			"favArray" : ["Bobby"],
