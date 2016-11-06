@@ -29,12 +29,13 @@
 	</table>
 	<!--button class="bg-success" id="friends">Friends</button>
 	<button id="me">Me</button-->
-	<button onclick="showList()">Show Rank</button>
+	<button onclick="showList()" id="show">Show Rank</button>
 </div>
 </body>
 
 <script>
 function showList(){
+	$("#show").prop("disabled", true);
 	$.ajax({
 		dataType: "json",
 		contentType: "application/json",
@@ -46,32 +47,6 @@ function showList(){
 			}
 		}
 	});
-
-
-
-	// $.getJSON("sleeprank.json", {
-	// 	tagmode: "any",
-	// 	format: "json"
-	// })
-	// .done(function(data){
-	// 	//data = JSON.parse(data);
-	// 	console.log(data.value[0][4]);
-	// 	console.log(data.value[0]['name']);
-	// 	console.log(data.value[0]["name"]);
-	// 	console.log(data.value[0].name);
-	// 	for (i = 0; i < data.value.length; i++) {
-	// 		$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
-	// 	}
-	// });
-
-	// $.getJSON("", function(data) {
-	// $.getJSON("sleeprank.json", function(data) {
-	// // 	console.log(data);
-	// 	for (i = 0; i < data.value.length; i++) {
-	// 		alert(i);
-	// 		$("#list").append("<tr><td>"+data.value[i].rank+"</td><td>"+data.value[i].name+"</td><td>"+data.value[i].sleepTime+"</td><td>"+data.value[i].numOfLike+"</td></tr>");
-	// 	}
-	// })	
 }
 </script>
 
