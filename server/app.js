@@ -14,6 +14,25 @@ var db;
 var USERS_COLLECTION = "users";
 var URI = "mongodb://heroku_mz1ngxb6:tkve1tk6cm9poipp5jrt4a44ve@ds051640.mlab.com:51640/heroku_mz1ngxb6";
 
+// Clean database
+var DatabaseCleaner = require('database-cleaner');
+var databaseCleaner = new DatabaseCleaner('mongodb'); //type = 'mongodb|redis|couchdb'
+
+var insertData = function(db, callback) {
+	db.collection(USERS_COLLECTION).insertOne( {
+		"userID": 1,
+		"name": "Guocheng",
+		"rank": 1,
+		"sleepTime": 7.5,
+		"friendArray": [1],
+		"numOfLikes": 0,
+		"hasUpdated": true
+	}, function(err, result) {
+		console.log("inserted a user");
+		callback();
+	});
+}
+
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(URI, function (err, database) {
 	if (err) {
@@ -21,6 +40,11 @@ mongodb.MongoClient.connect(URI, function (err, database) {
 		process.exit(1);
 	}
 
+	// Clean the database
+	databaseCleaner.clean(database, function(){
+		// Insert a user
+		insertData(database, function() { });
+	});
 	// Save database object from the callback for reuse.
 	db = database;
 	console.log("Database connection ready");
@@ -31,6 +55,7 @@ mongodb.MongoClient.connect(URI, function (err, database) {
 		console.log("App now running on port", port);
 	});
 });
+
 
 
 // Generic error handler used by all endpoints.
@@ -55,7 +80,6 @@ app.get("/api/users", function(req, res) {
 
 app.post("/api/users", function(req, res) {
 	var newUser = req.body;
-	// newUser.createDate = new Date();
 
 	if (!(req.body.name)) {
 		handleError(res, "Invalid user input", "Must provide a name.", 400);
@@ -72,24 +96,25 @@ app.post("/api/users", function(req, res) {
 
 /*  "/api/users/:id"
  *    GET: find userInfo by id
- *    PUT: update userIfo by id
+ *    PUT: update userInfo by id
  */
 app.get("/api/users/:id", function(req, res) {
-	db.collection(USERS_COLLECTION).findOne({ userId: new ObjectID(req.params.id) }, function(err, doc) {
+	db.collection(USERS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
 		if (err) {
 			handleError(res, err.message, "Failed to get the user");
 		} else {
-			res.status(200).json(doc);
+			res.status(200).json(doc.friendArray);
 		}
 	});
 });
 
+
 app.put("/contacts/:id", function(req, res) {
 	var updateDoc = req.body;
-	delete updateDoc.userId;
+	delete updateDoc._id;
 
 	db.collection(USERS_COLLECTION).updateOne(
-		{ userId: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+		{ _id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
 			if (err) {
 				handleError(res, err.message, "Failed to update contact");
 			} else {
@@ -97,5 +122,6 @@ app.put("/contacts/:id", function(req, res) {
 			}
 		});
 });
+
 
 module.exports = app;
