@@ -5,16 +5,17 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var app = express();
-app.use(express.static(__dirname + "../client"));
+app.use(express.static(__dirname + ".."));
 app.use(bodyParser.json());
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
 var USERS_COLLECTION = "users";
+var URI = "mongodb://heroku_mz1ngxb6:tkve1tk6cm9poipp5jrt4a44ve@ds051640.mlab.com:51640/heroku_mz1ngxb6";
 
 // Connect to the database before starting the application server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+mongodb.MongoClient.connect(URI, function (err, database) {
 	if (err) {
 		console.log(err);
 		process.exit(1);
@@ -31,12 +32,6 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 	});
 });
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
-});
 
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
