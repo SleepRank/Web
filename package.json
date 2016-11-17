@@ -2,7 +2,6 @@
   "name": "sleeprank",
   "version": "1.0.0",
   "description": "Socialize your sleep time",
-  "main": "index.js",
   "scripts": {
     "start": "node ./server/bin/www",
     "test": "\"ls\""
@@ -37,5 +36,9 @@
   },
   "devDependencies": {
     "database-cleaner": "^1.1.0"
+  },
+  "engines": {
+	  "node": "4.6.0",
+	  "npm": "3.10.7"
   }
 }
