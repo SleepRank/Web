@@ -23,6 +23,7 @@ var db;
 var USERS_COLLECTION = "users";
 var URI = "mongodb://heroku_mz1ngxb6:tkve1tk6cm9poipp5jrt4a44ve@ds051640.mlab.com:51640/heroku_mz1ngxb6";
 
+/**    Use to initialize the database
 var insertData1 = function(db, callback) {
 	db.collection(USERS_COLLECTION).insertOne( {
 		"userID": 1,
@@ -93,6 +94,7 @@ var insertData5 = function(db, callback) {
 		callback();
 	});
 }
+*/
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(URI, function (err, database) {
@@ -108,9 +110,8 @@ mongodb.MongoClient.connect(URI, function (err, database) {
 });
 
 // Initialize the app.
-var server = app.listen(process.env.PORT || 8080, function () {
-	var port = server.address().port;
-	console.log("App now running on port", port);
+app.listen(process.env.PORT || 8080, function () {
+	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 
