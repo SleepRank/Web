@@ -23,78 +23,10 @@ var db;
 var USERS_COLLECTION = "users";
 var URI = "mongodb://heroku_mz1ngxb6:tkve1tk6cm9poipp5jrt4a44ve@ds051640.mlab.com:51640/heroku_mz1ngxb6";
 
-/**    Use to initialize the database
-var insertData1 = function(db, callback) {
-	db.collection(USERS_COLLECTION).insertOne( {
-		"userID": 1,
-		"name": "Guocheng",
-		"rank": 1,
-		"sleepTime": 7.5,
-		"friendArray": [1],
-		"numOfLikes": 0,
-		"hasUpdated": true
-	}, function(err, result) {
-		console.log("inserted a user");
-		callback();
-	});
-}
-var insertData2 = function(db, callback) {
-	db.collection(USERS_COLLECTION).insertOne( {
-		"userID": 2,
-		"name": "Han",
-		"rank": 2,
-		"sleepTime": 7.0,
-		"friendArray": [1,2],
-		"numOfLikes": 2,
-		"hasUpdated": true
-	}, function(err, result) {
-		console.log("inserted a user");
-		callback();
-	});
-}
-var insertData3 = function(db, callback) {
-	db.collection(USERS_COLLECTION).insertOne( {
-		"userID": 3,
-		"name": "Bobby",
-		"rank": 3,
-		"sleepTime": 6.5,
-		"friendArray": [1,2,3],
-		"numOfLikes": 5,
-		"hasUpdated": true
-	}, function(err, result) {
-		console.log("inserted a user");
-		callback();
-	});
-}
-var insertData4 = function(db, callback) {
-	db.collection(USERS_COLLECTION).insertOne( {
-		"userID": 4,
-		"name": "Rainy",
-		"rank": 4,
-		"sleepTime": 6.0,
-		"friendArray": [1,2,3,4],
-		"numOfLikes": 3,
-		"hasUpdated": true
-	}, function(err, result) {
-		console.log("inserted a user");
-		callback();
-	});
-}
-var insertData5 = function(db, callback) {
-	db.collection(USERS_COLLECTION).insertOne( {
-		"userID": 5,
-		"name": "Obama",
-		"rank": 1,
-		"sleepTime": 5.9,
-		"friendArray": [1,2,3,4,5],
-		"numOfLikes": 5,
-		"hasUpdated": true
-	}, function(err, result) {
-		console.log("inserted a user");
-		callback();
-	});
-}
-*/
+// // Clean database
+// var DatabaseCleaner = require('database-cleaner');
+// var databaseCleaner = new DatabaseCleaner('mongodb'); //type = 'mongodb|redis|couchdb'
+
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(URI, function (err, database) {
@@ -103,6 +35,8 @@ mongodb.MongoClient.connect(URI, function (err, database) {
 		process.exit(1);
 	}
 
+	// Clean the database
+	// databaseCleaner.clean(database, function(){} );
 	// Save database object from the callback for reuse.
 	db = database;
 	console.log("Database connection ready");
@@ -110,11 +44,9 @@ mongodb.MongoClient.connect(URI, function (err, database) {
 });
 
 // Initialize the app.
-app.listen(process.env.PORT || 8080, function () {
-	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
-
-
+// app.listen(process.env.PORT || 8080, function () {
+// 	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+// });
 
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
