@@ -23,10 +23,6 @@ var db;
 var USERS_COLLECTION = "users";
 var URI = "mongodb://heroku_mz1ngxb6:tkve1tk6cm9poipp5jrt4a44ve@ds051640.mlab.com:51640/heroku_mz1ngxb6";
 
-// Clean database
-var DatabaseCleaner = require('database-cleaner');
-var databaseCleaner = new DatabaseCleaner('mongodb'); //type = 'mongodb|redis|couchdb'
-
 var insertData1 = function(db, callback) {
 	db.collection(USERS_COLLECTION).insertOne( {
 		"userID": 1,
@@ -105,15 +101,6 @@ mongodb.MongoClient.connect(URI, function (err, database) {
 		process.exit(1);
 	}
 
-	// Clean the database
-	databaseCleaner.clean(database, function(){
-		// Insert a user
-		insertData1(database, function() { });
-		insertData2(database, function() { });
-		insertData3(database, function() { });
-		insertData4(database, function() { });
-		insertData5(database, function() { });
-	});
 	// Save database object from the callback for reuse.
 	db = database;
 	console.log("Database connection ready");
